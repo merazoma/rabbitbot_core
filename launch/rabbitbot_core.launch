@@ -1,0 +1,9 @@
+<launch>
+<rosparam command="load" file="$(find rabbitbot_core)/launch/RabbitParameters.yaml" />
+<node name="rabbitbot_rosserial" pkg="rosserial_python" type="serial_node.py" output="screen"/>
+<node name="odometry_tf_publisher" pkg="rabbitbot_core" type="odometry_tf_publisher"/>
+<node name="battery_state_publisher" pkg="rabbitbot_core" type="battery_state_publisher"/>
+
+<param name="robot_description" command="cat $(find rabbitbot_core)/robot_description/rabbitbot.urdf" />
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+</launch>
